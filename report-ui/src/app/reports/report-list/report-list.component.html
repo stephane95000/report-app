@@ -1,0 +1,26 @@
+<h1>Reporting list</h1>
+<div class="report-list__action">
+  <a color="primary" mat-raised-button routerLink="/create-report">CREATE</a>
+</div>
+<app-report-filter-form (formChangeEvent)="applyFilter($event)" />
+<ng-container *ngIf="cards$ | async as cards">
+  <ng-container *ngIf="cards.value; else loadingOrError">
+    <div *ngIf="cards.value.length; else emptyList" class="report-list__cards">
+      <app-report-card *ngFor="let card of cards.value" [card]="card" />
+    </div>
+  </ng-container>
+  <mat-paginator
+    [pageSizeOptions]="[8, 40, 80]"
+    class="report-list__paginator" />
+  <ng-template #emptyList>
+    <p class="report-list__empty">No data to display</p>
+  </ng-template>
+  <ng-template #loadingOrError>
+    <div *ngIf="cards.loading; else error" class="report-list__empty">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+</ng-container>
+<ng-template #error>
+  <p class="report-list__empty">Error loading the list of reports.</p>
+</ng-template>

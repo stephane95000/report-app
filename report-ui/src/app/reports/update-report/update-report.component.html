@@ -1,0 +1,14 @@
+<h1 class="update-report__title">Update report</h1>
+<ng-container *ngIf="report$ | async as report">
+  <app-report-form
+    *ngIf="report.value; else loadingOrError"
+    [report]="report.value" />
+  <ng-template #loadingOrError>
+    <div *ngIf="report.loading; else error" class="update-report__empty">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+</ng-container>
+<ng-template #error>
+  <p class="update-report__empty">Error loading the update form.</p>
+</ng-template>

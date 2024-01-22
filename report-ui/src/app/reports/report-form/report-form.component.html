@@ -1,0 +1,159 @@
+<mat-card>
+  <mat-card-content>
+    <ng-container *ngIf="observationsChips$ | async as observationsChips">
+      <ng-container *ngIf="observationsChips.value; else loadingOrError">
+        <form (ngSubmit)="submitReportForm()" [formGroup]="reportForm">
+          <h2>Author details</h2>
+          <div class="report-form__author-fields">
+            <mat-form-field appearance="outline" class="report-form__field">
+              <mat-label>First name</mat-label>
+              <input
+                formControlName="firstName"
+                matInput
+                placeholder="First name"
+                spellcheck="false" />
+              <mat-error
+                *ngIf="reportForm.controls.firstName.hasError('required')"
+                >You must email enter a value
+              </mat-error>
+              <mat-error
+                *ngIf="reportForm.controls.firstName.hasError('maxlength')"
+                >Max length exceeded</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="report-form__field">
+              <mat-label>Last name</mat-label>
+              <input
+                formControlName="lastName"
+                matInput
+                placeholder="Last name"
+                spellcheck="false" />
+              <mat-error
+                *ngIf="reportForm.controls.lastName.hasError('required')"
+                >You must enter a value</mat-error
+              >
+              <mat-error
+                *ngIf="reportForm.controls.lastName.hasError('maxlength')"
+                >Max length exceeded</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-select
+                formControlName="gender"
+                placeholder="Gender"
+                required>
+                <mat-option *ngFor="let gender of genders" [value]="gender">
+                  {{ gender }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="reportForm.controls.gender.hasError('required')"
+                >You must select a gender</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Birth date</mat-label>
+              <input
+                [matDatepicker]="picker"
+                [max]="maxDate"
+                [min]="minDate"
+                formControlName="birthDate"
+                matInput />
+              <mat-datepicker-toggle
+                [for]="picker"
+                matIconSuffix></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="reportForm.controls.birthDate.invalid"
+                >Please provide a valid date</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="report-form__field">
+              <mat-label>Email</mat-label>
+              <input formControlName="email" matInput placeholder="Email" />
+              <mat-error *ngIf="reportForm.controls.email.hasError('required')"
+                >You must enter an email</mat-error
+              >
+              <mat-error *ngIf="reportForm.controls.email.hasError('email')"
+                >Not a valid email</mat-error
+              >
+              <mat-error
+                *ngIf="reportForm.controls.email.hasError('emailAlreadyUsed')"
+                >This email is already used
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <h2>Description</h2>
+          <div class="report-form__description">
+            <mat-form-field
+              appearance="outline"
+              class="report-form__description-field">
+              <mat-label>Description</mat-label>
+              <textarea
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMaxRows="7"
+                cdkAutosizeMinRows="1"
+                cdkTextareaAutosize
+                formControlName="description"
+                matInput
+                spellcheck="false"></textarea>
+              <mat-hint align="end"
+                >{{ reportForm.controls.description.value.length }} /
+                256</mat-hint
+              >
+              <mat-error
+                *ngIf="reportForm.controls.description.hasError('required')"
+                >You must enter a value</mat-error
+              >
+              <mat-error
+                *ngIf="reportForm.controls.description.hasError('maxlength')"
+                >Max length exceeded</mat-error
+              >
+            </mat-form-field>
+          </div>
+          <ng-container *ngIf="observationsChips.value?.length">
+            <h2>Observations</h2>
+            <div class="report-form__observations">
+              <mat-chip-listbox
+                aria-label="Fish selection"
+                formControlName="observations"
+                multiple="true">
+                <ng-container *ngFor="let chip of observationsChips.value">
+                  <mat-chip-option [value]="chip">
+                    {{ observations?.get(chip) }}
+                  </mat-chip-option>
+                </ng-container>
+              </mat-chip-listbox>
+            </div>
+          </ng-container>
+          <span *ngIf="generalError" class="report-form__general-error"
+            >An error occured, please retry again</span
+          >
+          <div class="report-form__actions">
+            <button (click)="goBack()" mat-raised-button type="button">
+              CANCEL
+            </button>
+            <button
+              [disabled]="isSubmitInProgress"
+              color="primary"
+              mat-raised-button
+              type="submit">
+              <mat-icon *ngIf="isSubmitInProgress">
+                <mat-spinner diameter="15" />
+              </mat-icon>
+              {{ buttonLabel }}
+            </button>
+          </div>
+        </form>
+      </ng-container>
+      <ng-template #loadingOrError>
+        <div
+          *ngIf="observationsChips.loading; else error"
+          class="report-form__empty">
+          <mat-spinner></mat-spinner>
+        </div>
+      </ng-template>
+    </ng-container>
+    <ng-template #error>
+      <p class="report-form__empty">Error loading the form.</p>
+    </ng-template>
+  </mat-card-content>
+</mat-card>

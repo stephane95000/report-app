@@ -1,0 +1,11 @@
+@import '../../shared/shared.mixins.scss';
+
+:host {
+  @include layout;
+
+  .create-report {
+    &__title {
+      margin-bottom: 24px;
+    }
+  }
+}

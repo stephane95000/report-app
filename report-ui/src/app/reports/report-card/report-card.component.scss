@@ -1,0 +1,24 @@
+@import '../../shared/shared.mixins.scss';
+
+.report-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    flex: 1 1 auto;
+  }
+
+  &__description {
+    @include ellipsis(2);
+    margin-top: 12px;
+  }
+
+  &__divider {
+    margin: 16px 16px 0px 16px;
+  }
+
+  &__chips {
+    margin-bottom: 12px;
+  }
+}

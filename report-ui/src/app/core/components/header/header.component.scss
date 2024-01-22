@@ -1,0 +1,19 @@
+:host {
+  .header {
+    &__button {
+      margin-right: 8px;
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    &__logo {
+      width: 36px;
+    }
+  }
+}

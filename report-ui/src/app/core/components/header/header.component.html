@@ -1,0 +1,16 @@
+<mat-toolbar class="header" color="primary">
+  <button
+    (click)="menuButtonClick.emit()"
+    aria-label="Menu"
+    class="header__button"
+    mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <a class="header__link" routerLink="/">
+    <img
+      alt="Matawan logo"
+      class="header__logo"
+      src="assets/images/logo-white.webp" />
+    <span class="header__title">Reporting App</span>
+  </a>
+</mat-toolbar>

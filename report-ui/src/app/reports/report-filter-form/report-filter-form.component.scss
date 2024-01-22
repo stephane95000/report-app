@@ -1,0 +1,19 @@
+@import "../../shared/shared.mixins.scss";
+
+.report-filters {
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__form {
+    @include breakpoint(large) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include breakpoint(small) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 16px;
+  }
+}

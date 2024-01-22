@@ -1,0 +1,22 @@
+<div class="sidenav">
+  <app-header (menuButtonClick)="nav.toggle()" />
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+      #nav
+      [mode]="(isMobile | async) ? 'over' : 'side'"
+      class="sidenav__links">
+      <mat-nav-list>
+        <a
+          *ngFor="let link of links"
+          [routerLink]="link.path"
+          class="sidenav__link"
+          mat-list-item>
+          <span class="sidenav__label">{{ link.label }}</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <ng-content></ng-content>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

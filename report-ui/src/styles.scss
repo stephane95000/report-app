@@ -1,0 +1,30 @@
+html,
+body {
+  height: 100%;
+  background-color: #fafafa;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.snackbar-success {
+  .mdc-snackbar__surface {
+    background-color: green !important;
+  }
+
+  .mdc-snackbar__label, .mdc-button__label {
+    color: white !important;
+  }
+}
+
+.snackbar-error {
+  .mdc-snackbar__surface {
+    background-color: red !important;
+  }
+
+  .mdc-snackbar__label, .mdc-button__label {
+    color: white !important;
+  }
+}

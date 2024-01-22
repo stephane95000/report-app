@@ -1,0 +1,47 @@
+@import '../../shared/shared.mixins.scss';
+
+:host {
+  @include layout;
+
+  .report-details {
+    &__title {
+      margin-bottom: 24px;
+    }
+
+    &__card {
+      &-info {
+        @include breakpoint(medium) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        @include breakpoint(small) {
+          grid-template-columns: repeat(1, 1fr);
+        }
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-bottom: 16px;
+      }
+    }
+
+    &__description-block {
+      margin-bottom: 24px;
+    }
+
+    &__label {
+      font-weight: 500;
+    }
+
+    &__actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 16px;
+      gap: 16px;
+    }
+
+    &__empty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+    }
+  }
+}

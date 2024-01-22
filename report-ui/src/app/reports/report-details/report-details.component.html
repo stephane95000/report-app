@@ -1,0 +1,69 @@
+<h1 class="report-details__title">Report details</h1>
+<ng-container *ngIf="report$ | async as report">
+  <ng-container *ngIf="report.value; else loadingOrError">
+    <mat-card class="report-details__card">
+      <mat-card-content>
+        <h2>Author details</h2>
+        <div class="report-details__card-info">
+          <p>
+            <span class="report-details__label">Id : </span
+            >{{ report.value.id }}
+          </p>
+          <p>
+            <span class="report-details__label">First name : </span
+            >{{ report.value.author.first_name }}
+          </p>
+          <p>
+            <span class="report-details__label">Last name : </span
+            >{{ report.value.author.last_name }}
+          </p>
+          <p>
+            <span class="report-details__label">Email : </span
+            >{{ report.value.author.email }}
+          </p>
+          <p>
+            <span class="report-details__label">Birth Date : </span
+            >{{ report.value.author.birth_date | date: 'longDate' }}
+          </p>
+          <p>
+            <span class="report-details__label">Gender : </span
+            >{{ report.value.author.sex }}
+          </p>
+        </div>
+        <div class="report-details__description-block">
+          <h2>Description</h2>
+          <p>{{ report.value.description }}</p>
+        </div>
+        <ng-container *ngIf="report.value.observations.length">
+          <h2>Observations</h2>
+          <div class="report-details__card-observations">
+            <mat-chip-set aria-label="observations">
+              <mat-chip
+                *ngFor="let observation of report.value.observations"
+                highlighted="true">
+                {{ observation.name }}
+              </mat-chip>
+            </mat-chip-set>
+          </div>
+        </ng-container>
+      </mat-card-content>
+    </mat-card>
+    <div class="report-details__actions">
+      <button (click)="goBack()" mat-raised-button>GO BACK</button>
+      <a
+        [routerLink]="'/update-report/' + report.value.id"
+        color="primary"
+        mat-raised-button
+        >MODIFY</a
+      >
+    </div>
+  </ng-container>
+  <ng-template #loadingOrError>
+    <div *ngIf="report.loading; else error" class="report-details__empty">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+</ng-container>
+<ng-template #error>
+  <p class="report-details__empty">Error loading the report details.</p>
+</ng-template>

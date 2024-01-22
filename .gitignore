@@ -1,0 +1,94 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+report-ui/dist
+report-ui/tmp
+report-ui/out-tsc
+report-ui/bazel-out
+
+# Node
+report-ui/node_modules
+report-ui/npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+report-ui/.idea/
+report-ui/.project
+report-ui/.classpath
+report-ui/.c9/
+report-ui/*.launch
+report-ui/.settings/
+report-ui/*.sublime-workspace
+
+# Visual Studio Code
+report-ui/.vscode/*
+report-ui/!.vscode/settings.json
+report-ui/!.vscode/tasks.json
+report-ui/!.vscode/launch.json
+report-ui/!.vscode/extensions.json
+report-ui/.history/*
+
+# Miscellaneous
+report-ui//.angular/cache
+report-ui/.sass-cache/
+report-ui/connect.lock
+report-ui/coverage
+report-ui/libpeerconnection.log
+report-ui/testem.log
+report-ui/typings
+
+# System files
+report-ui/.DS_Store
+report-ui/Thumbs.db
+
+# compiled output
+report-api/dist
+report-api/node_modules
+
+# Logs
+report-api/logs
+report-api/*.log
+report-api/npm-debug.log*
+report-api/pnpm-debug.log*
+report-api/yarn-debug.log*
+report-api/yarn-error.log*
+report-api/lerna-debug.log*
+
+# OS
+report-api/.DS_Store
+
+# Tests
+report-api/coverage
+report-api/.nyc_output
+
+# IDEs and editors
+report-api/.idea
+report-api/.project
+report-api/.classpath
+report-api/.c9/
+report-api/*.launch
+report-api/.settings/
+report-api/*.sublime-workspace
+
+# IDE - VSCode
+report-api/.vscode/*
+report-api/!.vscode/settings.json
+report-api/!.vscode/tasks.json
+report-api/!.vscode/launch.json
+report-api/!.vscode/extensions.json
+
+# IDEs and editors
+.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

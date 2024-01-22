@@ -1,0 +1,18 @@
+@import '../../shared/shared.mixins.scss';
+
+:host {
+  @include layout;
+
+  .update-report {
+    &__title {
+      margin-bottom: 24px;
+    }
+
+    &__empty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+    }
+  }
+}

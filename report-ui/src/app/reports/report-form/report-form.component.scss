@@ -1,0 +1,36 @@
+@import '../../shared/shared.mixins.scss';
+
+.report-form {
+  &__author-fields {
+    @include breakpoint(small) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__description-field {
+    width: 100%;
+  }
+
+  &__general-error {
+    color: var(--mat-form-field-error-text-color);
+    margin-top: 8px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  &__empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+  }
+}

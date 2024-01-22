@@ -1,0 +1,25 @@
+<mat-card *ngIf="card" class="report-card">
+  <mat-card-header>
+    <mat-card-title
+      >{{ card.id }} : {{ card.firstName }} {{ card.lastName }}</mat-card-title
+    >
+    <mat-card-subtitle>{{ card.email }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="report-card__content">
+    <p class="report-card__description">
+      {{ card.description }}
+    </p>
+    <mat-chip-set aria-label="observations" class="report-card__chips">
+      <mat-chip
+        *ngFor="let observation of card.observations"
+        highlighted="true">
+        {{ observation.name }}
+      </mat-chip>
+    </mat-chip-set>
+  </mat-card-content>
+  <mat-divider class="report-card__divider" />
+  <mat-card-actions align="end">
+    <a [routerLink]="card.modifyPath" mat-button>MODIFY</a>
+    <a [routerLink]="card.consultPath" mat-button>CONSULT</a>
+  </mat-card-actions>
+</mat-card>
